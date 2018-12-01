@@ -167,3 +167,30 @@ img {
   max-width: 100%;
   height: auto;
 }
+h1 {
+  text-align: center;
+}
+.arena {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.arena .column {
+  width: 40%;
+  text-align: center;
+}
+.arena .column .player-title {
+  text-align: center;
+  margin: 15px 0;
+}
+.arena .column .roster {
+  width: 100%;
+  text-align: center;
+}
+.arena .column .roster button {
+  width: 20%;
+  text-align: center;
+  padding: 10px;
+  border-radius: 2%;
+  font-weight: bold;
+}
