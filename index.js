@@ -20,10 +20,34 @@ const vilAttack = document.querySelector(".vil-attack")
 const vilSaiyan = document.querySelector(".vil-saiyan")
 const vilHeal = document.querySelector(".vil-heal")
 
-console.log(vilCol)
-console.log(vilSelect)
-console.log(vilName)
-console.log(vilHealth)
-console.log(vilAttack)
-console.log(vilSaiyan)
-console.log(vilHeal)
+const heroes = {
+    "Goku":{
+        name: "Goku",
+        power: 10,
+        health: 50,
+        saiyan: 50,
+    },
+    "Master Roshi":{
+        name: "Master Roshi",
+        power: 10,
+        health: 60,
+        saiyan: 50,
+    },
+    "Piccolo": {
+        name: "Piccolo",
+        power: 10,
+        health: 70,
+        saiyan: 50,
+    },
+    "Krillin": {
+        name: "Krillin",
+        power: 10,
+        health: 80,
+        saiyan: 50,
+    },
+
+}
+
+function selectHero(){
+
+}
