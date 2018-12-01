@@ -193,6 +193,18 @@ h1 {
   border-radius: 2%;
   font-weight: bold;
 }
+.arena .column .hero-header {
+  margin: 15px auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.arena .column .vil-header {
+  margin: 15px auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 .arena .column img {
   margin: 60px 0;
 }
