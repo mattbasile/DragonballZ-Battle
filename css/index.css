@@ -189,8 +189,33 @@ h1 {
 }
 .arena .column .roster button {
   width: 20%;
-  text-align: center;
   padding: 10px;
   border-radius: 2%;
   font-weight: bold;
+}
+.arena .column img {
+  margin: 60px 0;
+}
+.arena .column .actionBtns button {
+  width: 45%;
+  padding: 10px;
+  border-radius: 2%;
+  font-weight: bold;
+}
+.arena .column .actionBtns .healBtn button {
+  width: 90%;
+}
+.arena .start {
+  padding: 30px 20px;
+  border-radius: 100%;
+  border: 3px solid #FFD553;
+  background: orange;
+  color: red;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.arena .start:hover {
+  border: 3px solid orange;
+  background: #FFD553;
+  color: red;
 }
