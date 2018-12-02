@@ -22,11 +22,11 @@
         </div>
         <div class="hero-header">
             <h3 class="hero-title">Hero: Goku</h3>
-            <h3 class="hero-health">Health: 200</h3>
+            <h3 class="hero-health">Health: 50</h3>
         </div>
         <img class="hero-img" src="img/goku.png" alt="">
         <div class="actionBtns">
-            <button class="hero-attack">Attack</button>
+            <button onclick="heroAttackMove(selectedVillain, selectedHero)" class="hero-attack">Attack</button>
             <button class="hero-saiyan">Saiyan</button>
             <div class="healBtn">
                 <button class="hero-heal">Heal</button>
@@ -44,16 +44,19 @@
         </nav>
         <div class="vil-header">
                 <h3 class="vil-title">Villain: Frieza</h3>
-                <h3 class="vil-health">Health: 200</h3>
+                <h3 class="vil-health">Health: 50</h3>
             </div>
         <img class="vil-img" src="img/frieza.png" alt="">
         <div class="actionBtns">
-            <button class="vil-attack">Attack</button>
+            <button onclick="vilAttackMove(selectedHero, selectedVillain)"  class="vil-attack">Attack</button>
             <button class="vil-saiyan">Saiyan</button>
             <div class="healBtn">
                 <button class="vil-heal">Heal</button>
             </div>
         </div>
+    </div>
+    <div class="play-by-play">
+
     </div>
 
 </section>

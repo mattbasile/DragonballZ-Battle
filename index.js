@@ -1,7 +1,7 @@
 //DOM Objects we'll need to manipulate.
 //=================ARENA=====================
 const arena = document.querySelector(".arena"); 
-console.log(arena);
+// console.log(arena);
 //================HERO COLUMN==================
 const heroCol = document.querySelector(".hero"); 
 const heroSelect = document.querySelector(".hero-roster")
@@ -27,6 +27,8 @@ const vilAttack = document.querySelector(".vil-attack")
 const vilSaiyan = document.querySelector(".vil-saiyan")
 const vilHeal = document.querySelector(".vil-heal")
 
+// Play by Play
+const playByPlay = document.querySelector(".play-by-play")
 
 
 class Player {
@@ -74,7 +76,7 @@ const heroes = {
     piccolo,
     krillin
 }
-console.log(heroes);
+// console.log(heroes);
 //Villains
 const frieza = new Player({
     name: "Frieza",
@@ -112,18 +114,18 @@ const villains = {
 }
 
 const selectedHero = new Player({
-    name: "Hero",
-    health: 0,
-    saiyanPwr: 0,
-    attackPwr: 0,
-    image: "img/goku.png",
+    name: "Goku",
+    health: 50,
+    saiyanPwr: 20,
+    attackPwr: 10,
+    image: "img/goku.png"
 });
 const selectedVillain = new Player({
-    name: "Villan",
-    health: 0,
+    name: "Frieza",
+    health: 50,
     saiyanPwr: 20,
-    attackPwr: 0,
-    image: "img/frieza.png",
+    attackPwr: 10,
+    image: "img/frieza.png"
 });
 
 
@@ -141,7 +143,7 @@ function selectHero(){
    selectedHero.attackPwr = char.attackPwr;
    selectHero.image = char.image;
 }
-console.log(selectedHero);
+// console.log(selectedHero);
 
 function selectVil(){
     const key = this.className;
@@ -158,7 +160,19 @@ function selectVil(){
     selectedVillain.image = char.image;
  }
 
-
-// function heroAttack(){
-
-// }
+///ATTACK FUNCTIONS
+function heroAttackMove(vil, hero) {
+    let activeHealth = vil.health;
+    let heroStr = hero.attackPwr;
+    let newHealth = activeHealth -= heroStr;
+    selectedVillain.health = newHealth;
+    vilHealth.innerHTML = `Health: ${selectedVillain.health}`;
+    
+}
+function vilAttackMove(hero, vil) {
+    let activeHealth = hero.health;
+    let vilStr = vil.attackPwr;
+    let newHealth = activeHealth -= vilStr;
+    selectedHero.health = newHealth;
+    heroHealth.innerHTML = `Health: ${selectedHero.health}`;
+}
