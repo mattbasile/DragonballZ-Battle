@@ -16,6 +16,7 @@ const twoBtnImg = document.querySelectorAll(".two-player img");
 //================HERO COLUMN==================
 const heroCol = document.querySelector(".hero"); 
 const heroSelect = document.querySelector(".hero-roster")
+const fullRoster = document.querySelectorAll(".roster")
 const heroSelectBtns = document.querySelectorAll(".hero-roster button")
 // const gokuBtn = document.querySelectorAll(".goku");
 // const masterRBtn = document.querySelectorAll(".masterR");
@@ -198,7 +199,7 @@ function selectVil(){
 ///ATTACK FUNCTIONS
 function heroAttackMove(vil, hero) {
     let accuracy = Math.floor(Math.random() * 11);
-    if(accuracy >= 1){
+    if(accuracy >= 3){
     hero.hits += 1;
     if(hero.hits >= 3){
         herosaiyainActivate(selectedVillain,selectedHero);
@@ -225,9 +226,16 @@ function heroAttackMove(vil, hero) {
   }
 }
 function vilAttackMove(hero, vil) {
+    let accuracy = Math.floor(Math.random() * 11);
+    if(accuracy >= 3){
+    vil.hits +=1;
+    if(vil.hits >= 3){
+        villainsaiyainActivate(selectedHero, selectedVillain);
+    }
     let activeHealth = hero.health;
     let vilStr = vil.attackPwr;
     let newHealth = activeHealth -= vilStr;
+    playByPlay.innerHTML= `Nice you hit ${hero.name} for ${vilStr}. Their health is ${newHealth}`;
     if(newHealth <=0 ){
         selectedHero.health = 0;
         heroHealth.innerHTML = `Health: ${selectedHero.health}`;
@@ -242,6 +250,9 @@ function vilAttackMove(hero, vil) {
     selectedHero.health = newHealth;
     heroHealth.innerHTML = `Health: ${selectedHero.health}`;
     }
+ } else{
+    playByPlay.innerHTML= `How unusual your attack has missed!`;
+ }
 }
 //SAIYANATTACKS
 function heroSaiyanMove(vil, hero) {
@@ -310,8 +321,6 @@ function starTextOne(){
     oneBtn.innerHTML="One Player";
 }
 function starTextTwo(){
-    console.log(twoBtnImg);
-    
     twoBtnImg.forEach(function(img) {console.log(img)});
     twoBtn.innerHTML="Two Player";
 }
@@ -329,25 +338,33 @@ function startFight(){
     heroSaiyan.style.textDecoration='line-through';
     heroHeal.setAttribute("onclick","heroHealMove(selectedHero)");
     vilAttack.setAttribute( "onclick", "vilAttackMove(selectedHero, selectedVillain)");
+    vilSaiyan.style.textDecoration='line-through';
     vilSaiyan.setAttribute("onclick","vilSaiyanMove(selectedHero, selectedVillain)")
     vilHeal.setAttribute("onclick","villainHealMove(selectedVillain)");
     startBtn.style.display='none';
     mainTitle.style.display='none';
-    body.style.background = "url('img/arena_BG.jpg') center center/cover no-repeat"
+    body.style.background = "url('img/arena_BG.jpg') center center/cover no-repeat";
+    fullRoster.forEach(function(name){name.style.display='none';})
+    if(Math.floor(Math.random() * 2) + 1 == 1 ){
+        playByPlay.innerHTML="Player 1, Go First!"
+    } else{
+        playByPlay.innerHTML="Player 2, Go First!";
+    }
 };
 
 function herosaiyainActivate(vil, hero){
     let hp = 30;
-    console.log(hp);
-    console.log(hero.hits == 3);
-    console.log(hero.hits);
-    console.log(vil.health <= hp);
-    console.log(vil.health);
     if(vil.health <= hp && hero.hits >= 3){
         console.log("in");
         heroSaiyan.setAttribute("onclick","heroSaiyanMove(selectedVillain, selectedHero)");
         heroSaiyan.style.textDecoration='none';
     } 
 }
-
+function villainsaiyainActivate(hero, vil){
+    let hp = 30;
+    if(hero.health <= hp && vil.hits >= 3){
+        vilSaiyan.setAttribute("onclick","vilSaiyanMove(selectedHero, selectedVillain)");
+        vilSaiyan.style.textDecoration='none';
+    } 
+}
     
