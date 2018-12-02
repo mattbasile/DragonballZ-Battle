@@ -14,17 +14,17 @@
 <section class="arena">
     <div class="hero column">
         <h2 class="player-title">Player 1</h2>
-        <nav class="roster hero-roster">
-            <button class="Goku" >Goku</button>
-            <button class="MasterR">Master Roshi</button>
-            <button class="Piccolo">Piccolo</button>
-            <button class="Krillin">Krillin</button>
-        </nav>
+        <div class="roster hero-roster">
+            <button onclick="selectHero.call(this)" class="goku" >Goku</button>
+            <button onclick="selectHero.call(this)" class="masterR">Master Roshi</button>
+            <button onclick="selectHero.call(this)" class="piccolo">Piccolo</button>
+            <button onclick="selectHero.call(this)" class="krillin">Krillin</button>
+        </div>
         <div class="hero-header">
             <h3 class="hero-title">Hero: Goku</h3>
             <h3 class="hero-health">Health: 200</h3>
         </div>
-        <img src="img/goku.png" alt="">
+        <img class="hero-img" src="img/goku.png" alt="">
         <div class="actionBtns">
             <button class="hero-attack">Attack</button>
             <button class="hero-saiyan">Saiyan</button>

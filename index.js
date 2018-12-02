@@ -6,7 +6,11 @@ console.log(arena);
 const heroCol = document.querySelector(".hero"); 
 const heroSelect = document.querySelector(".hero-roster")
 const heroSelectBtns = document.querySelectorAll(".hero-roster button")
-console.log(heroSelectBtns);
+// const gokuBtn = document.querySelectorAll(".goku");
+// const masterRBtn = document.querySelectorAll(".masterR");
+// const piccoloBtn = document.querySelectorAll(".piccolo");
+// const krillinBtn = document.querySelectorAll(".krillin");
+const heroImg = document.querySelector(".hero-img")
 const heroName = document.querySelector(".hero-title")
 const heroHealth = document.querySelector(".hero-health")
 const heroAttack = document.querySelector(".hero-attack")
@@ -27,9 +31,9 @@ const vilHeal = document.querySelector(".vil-heal")
 class Player {
     constructor(attributes){
         this.name = attributes.name;
-        this.health = attributes.name;
+        this.health = attributes.health;
         this.saiyanPwr = attributes.saiyanPwr;
-        this.attackPwr = attributes.saiyanPwr;
+        this.attackPwr = attributes.attackPwr;
         this.image = attributes.image;
     }
 }
@@ -105,4 +109,30 @@ const villains = {
     beerus,
     cell
 }
-console.log(villains);
+const selectedHero = new Player({
+    name: "PlayerOne",
+    health: 0,
+    saiyanPwr: 20,
+    attackPwr: 10,
+    image: "img/cell.png"
+})
+
+function selectHero(){
+   const key = this.className;
+   const char = heroes[key];
+   console.log(key);
+   console.log(char);
+   heroName.innerHTML= `Hero: ${char.name}`
+   heroHealth.innerHTML = `Health: ${char.health}`
+   heroImg.setAttribute("src", `${char.image}`);
+   selectedHero.health = char.health;
+   selectedHero.name = char.name;
+   selectedHero.saiyanPwr = char.saiyanPwr;
+   selectedHero.attackPwr = char.attackPwr;
+   selectHero.image = char.image;
+}
+console.log(selectedHero);
+  
+
+
+
