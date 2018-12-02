@@ -189,6 +189,16 @@ img {
   padding: 10px;
   border-radius: 2%;
   font-weight: bold;
+  border: 2px solid #FFD553;
+  background: orange;
+  color: red;
+  letter-spacing: 0.4px;
+  font-size: 1.3rem;
+}
+.arena .column .roster button:hover {
+  border: 2px solid orange;
+  background: #FFD553;
+  color: red;
 }
 .arena .column .hero-header {
   margin: 15px auto;

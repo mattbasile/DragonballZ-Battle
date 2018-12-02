@@ -226,6 +226,7 @@ function vilSaiyanMove(hero, vil) {
     }
 }
 
+
 //RECOVERY FUNCTIONS
 function heroHealMove(hero){
     let activeHealth = hero.health;
@@ -247,18 +248,15 @@ function beginGame(){
     playByPlay.style.display='none';
     body.style.backgroundImage = "url('img/start_BG.jpg')";
 }
-
 function hideStart() {
     arena.style.display='flex';
     playByPlay.style.display='flex';
     gameStart.style.display='none';
-    mainTitle.innerHTML="Ready for Battle?"
+    mainTitle.innerHTML="Ready for Battle? Pick a Player!"
 };
-
 window.onload = beginGame;
 
 // START FIGHT
-
 function startFight(){
     heroAttack.setAttribute( "onclick", "heroAttackMove(selectedVillain, selectedHero)");
     heroSaiyan.setAttribute("onclick","heroSaiyanMove(selectedVillain, selectedHero)")
