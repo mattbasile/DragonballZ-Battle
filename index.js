@@ -49,6 +49,10 @@ class Player {
         this.hits = attributes.hits;
         this.saiyanName = attributes.saiyanName;
         this.attackName = attributes.attackName;
+        this.mainColor = attributes.mainColor;
+        this.secondColor = attributes.secondColor;
+        this.healColor = attributes.healColor;
+        this.healColorDark = attributes.healColorDark;
     }
 }
 //HEROS
@@ -61,6 +65,10 @@ const goku = new Player({
     attackName: "Ki Blast",
     image: "img/goku.png",
     hits: 0,
+    mainColor: '#F85B1A',
+    secondColor: '#072083',
+    healColor: '#A2F5BF',
+    healColorDark: '#1F9D55',
 });
 const masterR = new Player({
     name: "Master Roshi",
@@ -71,6 +79,8 @@ const masterR = new Player({
     attackName: "Ki Blast",
     image: "img/roshi.png",
     hits: 0,
+    healColor: '#A2F5BF',
+    healColorDark: '#1F9D55',
 });
 const piccolo = new Player({
     name: "Piccolo",
@@ -81,6 +91,8 @@ const piccolo = new Player({
     attackName: "Ki Blast",
     image: "img/piccolo.png",
     hits: 0,
+    healColor: '#A2F5BF',
+    healColorDark: '#1F9D55',
 });
 const krillin = new Player({
     name: "Krillin",
@@ -91,6 +103,10 @@ const krillin = new Player({
     attackName: "Ki Blast",
     image: "img/krillin.png",
     hits: 0,
+    mainColor: '#F85B1A',
+    secondColor: '#072083',
+    healColor: '#A2F5BF',
+    healColorDark: '#1F9D55',
 });
 const heroes = {
     goku,
@@ -109,6 +125,10 @@ const frieza = new Player({
     attackName: "Ki Blast",
     image: "img/frieza.png",
     hits: 0,
+    mainColor: '#633183',
+    secondColor: '#C1D2C8',
+    healColor: '#A2F5BF',
+    healColorDark: '#1F9D55',
 });
 const kidBu = new Player({
     name: "Kid Bu",
@@ -119,6 +139,8 @@ const kidBu = new Player({
     attackName: "Ki Blast",
     image: "img/kidbu.png",
     hits: 0,
+    healColor: '#A2F5BF',
+    healColorDark: '#1F9D55',
 });
 const beerus = new Player({
     name: "Beerus",
@@ -129,6 +151,8 @@ const beerus = new Player({
     attackName: "Ki Blast",
     image: "img/beerus.png",
     hits: 0,
+    healColor: '#A2F5BF',
+    healColorDark: '#1F9D55',
 });
 const cell = new Player({
     name: "Cell",
@@ -139,6 +163,8 @@ const cell = new Player({
     attackName: "Ki Blast",
     image: "img/cell.png",
     hits: 0,
+    healColor: '#A2F5BF',
+    healColorDark: '#1F9D55',
 });
 const villains = {
     frieza,
@@ -156,6 +182,10 @@ const selectedHero = new Player({
     attackName: "Ki Blast",
     image: "img/goku.png",
     hits: 0,
+    healColor: '#A2F5BF',
+    healColorDark: '#1F9D55',
+    mainColor: '',
+    secondColor: '',
 });
 const selectedVillain = new Player({
     name: "Frieza",
@@ -166,6 +196,10 @@ const selectedVillain = new Player({
     attackName: "Ki Blast",
     image: "img/frieza.png",
     hits:0,
+    healColor: '#51D88A',
+    healColorDark: '#1F9D55',
+    mainColor: '',
+    secondColor: '',
 });
 function selectHero(){
    const key = this.className;
@@ -175,11 +209,47 @@ function selectHero(){
    heroName.innerHTML= `Hero: ${char.name}`
    heroHealth.innerHTML = `Health: ${char.health}`
    heroImg.setAttribute("src", `${char.image}`);
+   //Arena Styles Based On Character
+   //Hero Attack Btn
+   heroAttack.style.backgroundColor=`${char.mainColor}`;
+   heroAttack.style.border=`3px solid ${char.secondColor}`;
+   heroAttack.addEventListener("mouseenter", ()=> {
+       heroAttack.style.border=`3px solid ${char.mainColor}`;
+       heroAttack.style.backgroundColor=`${char.secondColor}`;
+       setTimeout(function() {
+        heroAttack.style.backgroundColor=`${char.mainColor}`;
+        heroAttack.style.border=`3px solid ${char.secondColor}`;
+      }, 500);  
+   });
+   //Hero Saiyan Btn
+   heroSaiyan.style.backgroundColor=`${char.secondColor}`;
+   heroSaiyan.style.border=`3px solid ${char.mainColor}`;
+   heroSaiyan.addEventListener("mouseenter", ()=> {
+    heroSaiyan.style.border=`3px solid ${char.secondColor}`;
+    heroSaiyan.style.backgroundColor=`${char.mainColor}`;
+       setTimeout(function() {
+        heroSaiyan.style.backgroundColor=`${char.secondColor}`;
+        heroSaiyan.style.border=`3px solid ${char.mainColor}`;
+      }, 500);  
+   });
+   //Hero Health Btn 
+   heroHeal.style.backgroundColor=`${char.healColor}`;
+   heroHeal.style.border=`3px solid ${char.healColorDark}`;
+   heroHeal.addEventListener("mouseenter", ()=> {
+    heroHeal.style.border=`3px solid ${char.healColorDark}`;
+    heroHeal.style.backgroundColor=`${char.healColor}`;
+       setTimeout(function() {
+        heroHeal.style.backgroundColor=`${char.healColorDark}`;
+        heroHeal.style.border=`3px solid ${char.healColor}`;
+      }, 500);  
+   });
+
    selectedHero.health = char.health;
    selectedHero.name = char.name;
    selectedHero.saiyanPwr = char.saiyanPwr;
    selectedHero.attackPwr = char.attackPwr;
    selectHero.image = char.image;
+   
 }
 function selectVil(){
     const key = this.className;
@@ -308,7 +378,6 @@ function villainHealMove(vil){
     vil.health = healed;
     vilHealth.innerHTML = `Health: ${healed}`;
 }
-
 // ONE or TWO PLAYER
 function beginGame(){
     mainTitle.innerHTML="Welcome to DBZ Duels!"
@@ -331,7 +400,6 @@ function hideStart() {
     mainTitle.innerHTML="Ready for Battle? Pick a Player!"
 };
 window.onload = beginGame;
-
 // START FIGHT
 function startFight(){
     heroAttack.setAttribute( "onclick", "heroAttackMove(selectedVillain, selectedHero)");
@@ -351,7 +419,6 @@ function startFight(){
         playByPlay.innerHTML="Player 2, Go First!";
     }
 };
-
 function herosaiyainActivate(vil, hero){
     let hp = 30;
     if(vil.health <= hp && hero.hits >= 3){
