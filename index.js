@@ -8,6 +8,10 @@ const gameStartBTN = document.querySelectorAll(".player-button");
 const gameStartDiv = document.querySelectorAll(".game-start-con");
 const mainTitle = document.querySelector(".main-title");
 const startBtn = document.querySelector(".start");
+const oneBtn = document.querySelector(".onePlayer");
+const oneBtnImg = document.querySelector(".one-player img");
+const twoBtn = document.querySelector(".twoPlayer");
+const twoBtnImg = document.querySelectorAll(".two-player img");
 // console.log(arena);
 //================HERO COLUMN==================
 const heroCol = document.querySelector(".hero"); 
@@ -41,6 +45,7 @@ class Player {
         this.saiyanPwr = attributes.saiyanPwr;
         this.attackPwr = attributes.attackPwr;
         this.image = attributes.image;
+        this.hits = attributes.hits;
     }
 }
 //HEROS
@@ -49,28 +54,32 @@ const goku = new Player({
     health: 50,
     saiyanPwr: 20,
     attackPwr: 10,
-    image: "img/goku.png"
+    image: "img/goku.png",
+    hits: 0,
 });
 const masterR = new Player({
     name: "Master Roshi",
     health: 50,
     saiyanPwr: 20,
     attackPwr: 10,
-    image: "img/roshi.png"
+    image: "img/roshi.png",
+    hits: 0,
 });
 const piccolo = new Player({
     name: "Piccolo",
     health: 50,
     saiyanPwr: 20,
     attackPwr: 10,
-    image: "img/piccolo.png"
+    image: "img/piccolo.png",
+    hits: 0,
 });
 const krillin = new Player({
     name: "Krillin",
     health: 50,
     saiyanPwr: 20,
     attackPwr: 10,
-    image: "img/krillin.png"
+    image: "img/krillin.png",
+    hits: 0,
 });
 const heroes = {
     goku,
@@ -85,28 +94,32 @@ const frieza = new Player({
     health: 50,
     saiyanPwr: 20,
     attackPwr: 10,
-    image: "img/frieza.png"
+    image: "img/frieza.png",
+    hits: 0,
 });
 const kidBu = new Player({
     name: "Kid Bu",
     health: 50,
     saiyanPwr: 20,
     attackPwr: 10,
-    image: "img/kidbu.png"
+    image: "img/kidbu.png",
+    hits: 0,
 });
 const beerus = new Player({
     name: "Beerus",
     health: 50,
     saiyanPwr: 20,
     attackPwr: 10,
-    image: "img/beerus.png"
+    image: "img/beerus.png",
+    hits: 0,
 });
 const cell = new Player({
     name: "Cell",
     health: 50,
     saiyanPwr: 20,
     attackPwr: 10,
-    image: "img/cell.png"
+    image: "img/cell.png",
+    hits: 0,
 });
 const villains = {
     frieza,
@@ -166,11 +179,11 @@ function heroAttackMove(vil, hero) {
         selectedVillain.health = 0;
         vilHealth.innerHTML = `Health: ${selectedVillain.health}`;
         startBtn.style.display ="flex";
-        startBtn.innerHTML ="Play Again?";
+        startBtn.innerHTML ="Play <br> Again?";
         startBtn.addEventListener('click', function(){
             window.location.reload();
         });
-        return ( `You've destroyed ${vil.name}! Congrats ${hero.name}, you are a true Hero!`)
+        playByPlay.innerHTML= `You've destroyed ${vil.name}! Congrats ${hero.name}, you are a true Hero!`
 
     } else{
     selectedVillain.health = newHealth;
@@ -181,8 +194,20 @@ function vilAttackMove(hero, vil) {
     let activeHealth = hero.health;
     let vilStr = vil.attackPwr;
     let newHealth = activeHealth -= vilStr;
+    if(newHealth <=0 ){
+        selectedHero.health = 0;
+        heroHealth.innerHTML = `Health: ${selectedHero.health}`;
+        startBtn.style.display ="flex";
+        startBtn.innerHTML ="Play <br> Again?";
+        startBtn.addEventListener('click', function(){
+            window.location.reload();
+        });
+        playByPlay.innerHTML=  `You've destroyed ${hero.name}! Congrats ${vil.name}, you are a truly Wicked!`;
+
+    } else{
     selectedHero.health = newHealth;
     heroHealth.innerHTML = `Health: ${selectedHero.health}`;
+    }
 }
 //SAIYANATTACKS
 function heroSaiyanMove(vil, hero) {
@@ -194,11 +219,11 @@ function heroSaiyanMove(vil, hero) {
         selectedVillain.health = 0;
         vilHealth.innerHTML = `Health: ${selectedVillain.health}`;
         startBtn.style.display ="flex";
-        startBtn.innerHTML ="Play Again?";
+        startBtn.innerHTML ="Play <br> Again?";
         startBtn.addEventListener('click', function(){
             window.location.reload();
         });
-        return ( `You've destroyed ${vil.name}! Congrats ${hero.name}, you are a true Hero!`)
+        playByPlay.innerHTML= `You've destroyed ${vil.name}! Congrats ${hero.name}, you are a true Hero!`;
 
     } else{
     selectedVillain.health = newHealth;
@@ -214,19 +239,17 @@ function vilSaiyanMove(hero, vil) {
         selectedHero.health = 0;
         heroHealth.innerHTML = `Health: ${selectedHero.health}`;
         startBtn.style.display ="flex";
-        startBtn.innerHTML ="Play Again?";
+        startBtn.innerHTML ="Play <br> Again?";
         startBtn.addEventListener('click', function(){
             window.location.reload();
         });
-        return ( `You've destroyed ${hero.name}! Congrats ${vil.name}, you are a truly Wicked!`)
+        playByPlay.innerHTML= `You've destroyed ${hero.name}! Congrats ${vil.name}, you are a truly Wicked!`;
 
     } else{
     selectedHero.health = newHealth;
     heroHealth.innerHTML = `Health: ${selectedHero.health}`;
     }
 }
-
-
 //RECOVERY FUNCTIONS
 function heroHealMove(hero){
     let activeHealth = hero.health;
@@ -248,6 +271,16 @@ function beginGame(){
     playByPlay.style.display='none';
     body.style.backgroundImage = "url('img/start_BG.jpg')";
 }
+function starTextOne(){
+    oneBtnImg.style.display='none'; 
+    oneBtn.innerHTML="One Player";
+}
+function starTextTwo(){
+    console.log(twoBtnImg);
+    
+    twoBtnImg.forEach(function(img) {console.log(img)});
+    twoBtn.innerHTML="Two Player";
+}
 function hideStart() {
     arena.style.display='flex';
     playByPlay.style.display='flex';
@@ -259,7 +292,7 @@ window.onload = beginGame;
 // START FIGHT
 function startFight(){
     heroAttack.setAttribute( "onclick", "heroAttackMove(selectedVillain, selectedHero)");
-    heroSaiyan.setAttribute("onclick","heroSaiyanMove(selectedVillain, selectedHero)")
+    heroSaiyan.style.textDecoration='line-through';
     heroHeal.setAttribute("onclick","heroHealMove(selectedHero)");
     vilAttack.setAttribute( "onclick", "vilAttackMove(selectedHero, selectedVillain)");
     vilSaiyan.setAttribute("onclick","vilSaiyanMove(selectedHero, selectedVillain)")
@@ -267,6 +300,15 @@ function startFight(){
     startBtn.style.display='none';
     mainTitle.style.display='none';
     body.style.background = "url('img/arena_BG.jpg') center center/cover no-repeat"
-    
 };
+function hitCounter(){
+
+}
+
+function herosaiyainActivate(vil){
+    if(vil.health <= vil.health/2){
+        heroSaiyan.setAttribute("onclick","heroSaiyanMove(selectedVillain, selectedHero)");
+        heroSaiyan.style.textDecoration='none';
+    } 
+}
     

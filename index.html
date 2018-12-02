@@ -11,8 +11,11 @@
 <body>
 <h1 class="main-title">DBZ Duels</h1>
 <div class="game-start">
-    <button onclick="hideStart()" class="player-button one-player">One Player</button>
-    <button onclick="hideStart()" class="player-button"> Two Player</button>
+    <button onclick="hideStart()" onmouseover="starTextOne()" class="onePlayer player-button one-player"><img src="img/redstar.png" alt=""></button>
+    <button onclick="hideStart()" onmouseover="starTextTwo()" class="twoPlayer two-player player-button">
+         <img src="img/redstar.png" alt="">
+         <img src="img/redstar.png" alt="">
+    </button>
 </div>
 <section class="arena">
     <div class="hero column">
@@ -36,7 +39,9 @@
             </div>
         </div>
     </div>
+    <div>
     <button onclick="startFight()"class="start">Start!</button>
+   </div>
     <div class="villain column">
         <h2 class="player-title">Player 2</h2>
         <nav class="roster vil-roster">

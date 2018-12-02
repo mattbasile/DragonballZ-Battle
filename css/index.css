@@ -277,6 +277,9 @@ img {
   color: red;
   font-size: 5rem;
   font-weight: bold;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 .game-start .player-button:hover {
   border: 7px solid orange;
