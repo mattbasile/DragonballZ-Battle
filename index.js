@@ -1,6 +1,7 @@
 //DOM Objects we'll need to manipulate.
 //=================ARENA=====================
 const arena = document.querySelector(".arena"); 
+const startBtn = document.querySelector(".start");
 // console.log(arena);
 //================HERO COLUMN==================
 const heroCol = document.querySelector(".hero"); 
@@ -165,9 +166,19 @@ function heroAttackMove(vil, hero) {
     let activeHealth = vil.health;
     let heroStr = hero.attackPwr;
     let newHealth = activeHealth -= heroStr;
+    if(newHealth <=0 ){
+        selectedVillain.health = 0;
+        vilHealth.innerHTML = `Health: ${selectedVillain.health}`;
+        startBtn.innerHTML ="Play Again?"
+        startBtn.addEventListener('click', function(){
+            window.location.reload();
+        });
+        return ( `You've destroyed ${vil.name}! Congrats ${hero.name}, you are a true Hero!`)
+
+    } else{
     selectedVillain.health = newHealth;
     vilHealth.innerHTML = `Health: ${selectedVillain.health}`;
-    
+    }
 }
 function vilAttackMove(hero, vil) {
     let activeHealth = hero.health;
