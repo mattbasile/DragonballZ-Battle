@@ -163,6 +163,7 @@ function heroAttackMove(vil, hero) {
     if(newHealth <=0 ){
         selectedVillain.health = 0;
         vilHealth.innerHTML = `Health: ${selectedVillain.health}`;
+        startBtn.style.display ="flex";
         startBtn.innerHTML ="Play Again?";
         startBtn.addEventListener('click', function(){
             window.location.reload();
@@ -190,6 +191,7 @@ function heroSaiyanMove(vil, hero) {
     if(newHealth <=0 ){
         selectedVillain.health = 0;
         vilHealth.innerHTML = `Health: ${selectedVillain.health}`;
+        startBtn.style.display ="flex";
         startBtn.innerHTML ="Play Again?";
         startBtn.addEventListener('click', function(){
             window.location.reload();
@@ -209,6 +211,7 @@ function vilSaiyanMove(hero, vil) {
     if(newHealth <=0 ){
         selectedHero.health = 0;
         heroHealth.innerHTML = `Health: ${selectedHero.health}`;
+        startBtn.style.display ="flex";
         startBtn.innerHTML ="Play Again?";
         startBtn.addEventListener('click', function(){
             window.location.reload();
@@ -239,12 +242,27 @@ function villainHealMove(vil){
 function beginGame(){
     mainTitle.innerHTML="Welcome to DBZ Duels!"
     arena.style.display='none'; 
+    playByPlay.style.display='none';
 }
 
 function hideStart() {
     arena.style.display='flex';
+    playByPlay.style.display='inline-block';
     gameStart.style.display='none';
     mainTitle.innerHTML="Ready for Battle?"
 };
 
 window.onload = beginGame;
+
+// START FIGHT
+
+function startFight(){
+    heroAttack.setAttribute( "onclick", "heroAttackMove(selectedVillain, selectedHero)");
+    heroSaiyan.setAttribute("onclick","heroSaiyanMove(selectedVillain, selectedHero)")
+    heroHeal.setAttribute("onclick","heroHealMove(selectedHero)");
+    vilAttack.setAttribute( "onclick", "vilAttackMove(selectedHero, selectedVillain)");
+    vilSaiyan.setAttribute("onclick","vilSaiyanMove(selectedHero, selectedVillain)")
+    vilHeal.setAttribute("onclick","villainHealMove(selectedVillain)");
+    startBtn.style.display='none';
+};
+    

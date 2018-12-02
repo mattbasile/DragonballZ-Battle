@@ -11,7 +11,7 @@
 <body>
 <h1 class="main-title">DBZ Duels</h1>
 <div class="game-start">
-    <button onclick="hideStart()" class="player-button">One Player</button>
+    <button onclick="hideStart()" class="player-button one-player">One Player</button>
     <button onclick="hideStart()" class="player-button"> Two Player</button>
 </div>
 <section class="arena">
@@ -29,14 +29,14 @@
         </div>
         <img class="hero-img" src="img/goku.png" alt="">
         <div class="actionBtns">
-            <button onclick="heroAttackMove(selectedVillain, selectedHero)" class="hero-attack">Attack</button>
-            <button onclick="heroSaiyanMove(selectedVillain, selectedHero)"class="hero-saiyan">Saiyan</button>
+            <button class="hero-attack">Attack</button>
+            <button class="hero-saiyan">Saiyan</button>
             <div class="healBtn">
-                <button onclick="heroHealMove(selectedHero)"class="hero-heal">Heal</button>
+                <button class="hero-heal">Heal</button>
             </div>
         </div>
     </div>
-    <button class="start">Start!</button>
+    <button onclick="startFight()"class="start">Start!</button>
     <div class="villain column">
         <h2 class="player-title">Player 2</h2>
         <nav class="roster vil-roster">
@@ -51,19 +51,19 @@
             </div>
         <img class="vil-img" src="img/frieza.png" alt="">
         <div class="actionBtns">
-            <button onclick="vilAttackMove(selectedHero, selectedVillain)"  class="vil-attack">Attack</button>
-            <button onclick="vilSaiyanMove(selectedHero, selectedVillain)"class="vil-saiyan">Saiyan</button>
+            <button class="vil-attack">Attack</button>
+            <button class="vil-saiyan">Saiyan</button>
             <div class="healBtn">
-                <button onclick="villainHealMove(selectedVillain)"class="vil-heal">Heal</button>
+                <button class="vil-heal">Heal</button>
             </div>
         </div>
     </div>
-    <div class="play-by-play">
-
-    </div>
+    
 
 </section>
-
+<div class="play-by-play">
+        <p>What just happened!?!</p>
+    </div>
 
 <script src="index.js"></script>
 </body>
