@@ -1,6 +1,8 @@
 //DOM Objects we'll need to manipulate.
 //=================ARENA=====================
 const arena = document.querySelector(".arena"); 
+const gameStart = document.querySelector(".game-start");
+const mainTitle = document.querySelector(".main-title");
 const startBtn = document.querySelector(".start");
 // console.log(arena);
 //================HERO COLUMN==================
@@ -230,3 +232,11 @@ function villainHealMove(vil){
     vil.health = healed;
     vilHealth.innerHTML = `Health: ${healed}`;
 }
+
+// ONE or TWO PLAYER
+function beginGame(){
+    mainTitle.innerHTML="Welcome to DBZ Duels!"
+    arena.style.display='none';
+    
+}
+window.onload = beginGame;
