@@ -1,28 +1,35 @@
+.main-title{
+    text-align: center;
+    margin-top: 3%;
+    font-size: 5rem;
+    color: #FFD553;
+    font-weight: bold;
+}
 
 .game-start{
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        height: 500px;
-        width: 80%;
-        margin: 0 auto;
-        .one-player{
-            text-decoration: line-through;
-        }
-        .player-button{
-            height: 80%;
-            width: 40%;
-            border-radius: 100%;
-            border: 7px solid #FFD553;
-            background: orange;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 600px;
+    width: 81%;
+    margin: 0px auto;
+    .one-player{
+        text-decoration: line-through;
+    }
+    .player-button{
+        height: 70%;
+        width: 37%;
+        border-radius: 100%;
+        border: 7px solid #FFD553;
+        background: orange;
+        color: red;
+        font-size: 5rem;
+        font-weight: bold;
+        &:hover{
+            border: 7px solid orange;
+            background: #FFD553;
             color: red;
-            font-size: 5rem;
-            font-weight: bold;
-            &:hover{
-                border: 7px solid orange;
-                background: #FFD553;
-                color: red;
-            }
-            }
         }
+    }
+}
 

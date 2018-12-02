@@ -167,9 +167,6 @@ img {
   max-width: 100%;
   height: auto;
 }
-h1 {
-  text-align: center;
-}
 .arena {
   display: flex;
   justify-content: space-around;
@@ -243,20 +240,27 @@ h1 {
 .play-by-play p {
   font-size: 3rem;
 }
+.main-title {
+  text-align: center;
+  margin-top: 3%;
+  font-size: 5rem;
+  color: #FFD553;
+  font-weight: bold;
+}
 .game-start {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
-  height: 500px;
-  width: 80%;
-  margin: 0 auto;
+  height: 600px;
+  width: 81%;
+  margin: 0px auto;
 }
 .game-start .one-player {
   text-decoration: line-through;
 }
 .game-start .player-button {
-  height: 80%;
-  width: 40%;
+  height: 70%;
+  width: 37%;
   border-radius: 100%;
   border: 7px solid #FFD553;
   background: orange;

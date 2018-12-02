@@ -1,4 +1,6 @@
 //DOM Objects we'll need to manipulate.
+//=================BODY=====================
+const body = document.querySelector("body");
 //=================ARENA=====================
 const arena = document.querySelector(".arena"); 
 const gameStart = document.querySelector(".game-start");
@@ -243,6 +245,7 @@ function beginGame(){
     mainTitle.innerHTML="Welcome to DBZ Duels!"
     arena.style.display='none'; 
     playByPlay.style.display='none';
+    body.style.backgroundImage = "url('img/start_BG.jpg')";
 }
 
 function hideStart() {
