@@ -21,6 +21,7 @@ const heroHeal = document.querySelector(".hero-heal")
 const vilCol = document.querySelector(".villain"); 
 const vilSelect = document.querySelector(".vil-roster")
 const vilName = document.querySelector(".vil-title")
+const vilImg = document.querySelector(".vil-img")
 const vilHealth = document.querySelector(".vil-health")
 const vilAttack = document.querySelector(".vil-attack")
 const vilSaiyan = document.querySelector(".vil-saiyan")
@@ -109,13 +110,22 @@ const villains = {
     beerus,
     cell
 }
+
 const selectedHero = new Player({
-    name: "PlayerOne",
+    name: "Hero",
+    health: 0,
+    saiyanPwr: 0,
+    attackPwr: 0,
+    image: "img/goku.png",
+});
+const selectedVillain = new Player({
+    name: "Villan",
     health: 0,
     saiyanPwr: 20,
-    attackPwr: 10,
-    image: "img/cell.png"
-})
+    attackPwr: 0,
+    image: "img/frieza.png",
+});
+
 
 function selectHero(){
    const key = this.className;
@@ -132,7 +142,23 @@ function selectHero(){
    selectHero.image = char.image;
 }
 console.log(selectedHero);
-  
+
+function selectVil(){
+    const key = this.className;
+    const char = villains[key];
+    console.log(key);
+    console.log(char);
+    vilName.innerHTML= `Villain: ${char.name}`
+    vilHealth.innerHTML = `Health: ${char.health}`
+    vilImg.setAttribute("src", `${char.image}`);
+    selectedVillain.health = char.health;
+    selectedVillain.name = char.name;
+    selectedVillain.saiyanPwr = char.saiyanPwr;
+    selectedVillain.attackPwr = char.attackPwr;
+    selectedVillain.image = char.image;
+ }
 
 
+// function heroAttack(){
 
+// }
