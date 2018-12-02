@@ -231,7 +231,7 @@ h1 {
   background: #FFD553;
   color: red;
 }
-.game-start .game-start-con {
+.game-start {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -239,7 +239,7 @@ h1 {
   width: 80%;
   margin: 0 auto;
 }
-.game-start .game-start-con .player-button {
+.game-start .player-button {
   height: 80%;
   width: 40%;
   border-radius: 100%;
@@ -249,7 +249,7 @@ h1 {
   font-size: 5rem;
   font-weight: bold;
 }
-.game-start .game-start-con .player-button:hover {
+.game-start .player-button:hover {
   border: 7px solid orange;
   background: #FFD553;
   color: red;

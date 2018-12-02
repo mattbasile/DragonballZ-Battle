@@ -2,6 +2,8 @@
 //=================ARENA=====================
 const arena = document.querySelector(".arena"); 
 const gameStart = document.querySelector(".game-start");
+const gameStartBTN = document.querySelectorAll(".player-button");
+const gameStartDiv = document.querySelectorAll(".game-start-con");
 const mainTitle = document.querySelector(".main-title");
 const startBtn = document.querySelector(".start");
 // console.log(arena);
@@ -236,7 +238,13 @@ function villainHealMove(vil){
 // ONE or TWO PLAYER
 function beginGame(){
     mainTitle.innerHTML="Welcome to DBZ Duels!"
-    arena.style.display='none';
-    
+    arena.style.display='none'; 
 }
+
+function hideStart() {
+    arena.style.display='flex';
+    gameStart.style.display='none';
+    mainTitle.innerHTML="Ready for Battle?"
+};
+
 window.onload = beginGame;
