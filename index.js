@@ -247,7 +247,7 @@ function beginGame(){
 
 function hideStart() {
     arena.style.display='flex';
-    playByPlay.style.display='inline-block';
+    playByPlay.style.display='flex';
     gameStart.style.display='none';
     mainTitle.innerHTML="Ready for Battle?"
 };
@@ -264,5 +264,6 @@ function startFight(){
     vilSaiyan.setAttribute("onclick","vilSaiyanMove(selectedHero, selectedVillain)")
     vilHeal.setAttribute("onclick","villainHealMove(selectedVillain)");
     startBtn.style.display='none';
+    mainTitle.style.display='none';
 };
     
