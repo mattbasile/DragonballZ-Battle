@@ -17,7 +17,6 @@ const heroHealth = document.querySelector(".hero-health")
 const heroAttack = document.querySelector(".hero-attack")
 const heroSaiyan = document.querySelector(".hero-saiyan")
 const heroHeal = document.querySelector(".hero-heal")
-
 //================VILLAIN COLUMN==================
 const vilCol = document.querySelector(".villain"); 
 const vilSelect = document.querySelector(".vil-roster")
@@ -27,11 +26,8 @@ const vilHealth = document.querySelector(".vil-health")
 const vilAttack = document.querySelector(".vil-attack")
 const vilSaiyan = document.querySelector(".vil-saiyan")
 const vilHeal = document.querySelector(".vil-heal")
-
 // Play by Play
 const playByPlay = document.querySelector(".play-by-play")
-
-
 class Player {
     constructor(attributes){
         this.name = attributes.name;
@@ -41,7 +37,6 @@ class Player {
         this.image = attributes.image;
     }
 }
-
 //HEROS
 const goku = new Player({
     name: "Goku",
@@ -113,7 +108,6 @@ const villains = {
     beerus,
     cell
 }
-
 const selectedHero = new Player({
     name: "Goku",
     health: 50,
@@ -128,8 +122,6 @@ const selectedVillain = new Player({
     attackPwr: 10,
     image: "img/frieza.png"
 });
-
-
 function selectHero(){
    const key = this.className;
    const char = heroes[key];
@@ -145,7 +137,6 @@ function selectHero(){
    selectHero.image = char.image;
 }
 // console.log(selectedHero);
-
 function selectVil(){
     const key = this.className;
     const char = villains[key];
@@ -160,7 +151,6 @@ function selectVil(){
     selectedVillain.attackPwr = char.attackPwr;
     selectedVillain.image = char.image;
  }
-
 ///ATTACK FUNCTIONS
 function heroAttackMove(vil, hero) {
     let activeHealth = vil.health;
@@ -187,7 +177,6 @@ function vilAttackMove(hero, vil) {
     selectedHero.health = newHealth;
     heroHealth.innerHTML = `Health: ${selectedHero.health}`;
 }
-
 //SAIYANATTACKS
 function heroSaiyanMove(vil, hero) {
     let activeHealth = vil.health;
@@ -226,4 +215,18 @@ function vilSaiyanMove(hero, vil) {
     selectedHero.health = newHealth;
     heroHealth.innerHTML = `Health: ${selectedHero.health}`;
     }
+}
+
+//RECOVERY FUNCTIONS
+function heroHealMove(hero){
+    let activeHealth = hero.health;
+    let healed = activeHealth += Math.floor(Math.random() * 11);
+    hero.health = healed;
+    heroHealth.innerHTML = `Health: ${healed}`;
+}
+function villainHealMove(vil){
+    let activeHealth = vil.health;
+    let healed = activeHealth += Math.floor(Math.random() * 11);
+    vil.health = healed;
+    vilHealth.innerHTML = `Health: ${healed}`;
 }
