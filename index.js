@@ -268,5 +268,7 @@ function startFight(){
     vilHeal.setAttribute("onclick","villainHealMove(selectedVillain)");
     startBtn.style.display='none';
     mainTitle.style.display='none';
+    body.style.background = "url('img/arena_BG.jpg') center center/cover no-repeat"
+    
 };
     
