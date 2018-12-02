@@ -169,7 +169,7 @@ function heroAttackMove(vil, hero) {
     if(newHealth <=0 ){
         selectedVillain.health = 0;
         vilHealth.innerHTML = `Health: ${selectedVillain.health}`;
-        startBtn.innerHTML ="Play Again?"
+        startBtn.innerHTML ="Play Again?";
         startBtn.addEventListener('click', function(){
             window.location.reload();
         });
@@ -186,4 +186,44 @@ function vilAttackMove(hero, vil) {
     let newHealth = activeHealth -= vilStr;
     selectedHero.health = newHealth;
     heroHealth.innerHTML = `Health: ${selectedHero.health}`;
+}
+
+//SAIYANATTACKS
+function heroSaiyanMove(vil, hero) {
+    let activeHealth = vil.health;
+    let saiyanStr = hero.attackPwr + Math.floor(Math.random() * Math.floor(`${hero.saiyanPwr}`));
+    console.log(saiyanStr);
+    let newHealth = activeHealth -= saiyanStr;
+    if(newHealth <=0 ){
+        selectedVillain.health = 0;
+        vilHealth.innerHTML = `Health: ${selectedVillain.health}`;
+        startBtn.innerHTML ="Play Again?";
+        startBtn.addEventListener('click', function(){
+            window.location.reload();
+        });
+        return ( `You've destroyed ${vil.name}! Congrats ${hero.name}, you are a true Hero!`)
+
+    } else{
+    selectedVillain.health = newHealth;
+    vilHealth.innerHTML = `Health: ${selectedVillain.health}`;
+    }
+}
+function vilSaiyanMove(hero, vil) {
+    let activeHealth = hero.health;
+    let saiyanStr = vil.attackPwr + Math.floor(Math.random() * Math.floor(`${vil.saiyanPwr}`));
+    console.log(saiyanStr);
+    let newHealth = activeHealth -= saiyanStr;
+    if(newHealth <=0 ){
+        selectedHero.health = 0;
+        heroHealth.innerHTML = `Health: ${selectedHero.health}`;
+        startBtn.innerHTML ="Play Again?";
+        startBtn.addEventListener('click', function(){
+            window.location.reload();
+        });
+        return ( `You've destroyed ${hero.name}! Congrats ${vil.name}, you are a truly Wicked!`)
+
+    } else{
+    selectedHero.health = newHealth;
+    heroHealth.innerHTML = `Health: ${selectedHero.health}`;
+    }
 }
