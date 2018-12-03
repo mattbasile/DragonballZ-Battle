@@ -79,8 +79,8 @@ const masterR = new Player({
     attackName: "Ki Blast",
     image: "img/roshi.png",
     hits: 0,
-    mainColor: '#FFFFFF',
-    secondColor: '',
+    mainColor: '#E5A25D',
+    secondColor: '#423C65',
     healColor: '#A2F5BF',
     healColorDark: '#1F9D55',
 });
@@ -93,8 +93,10 @@ const piccolo = new Player({
     attackName: "Ki Blast",
     image: "img/piccolo.png",
     hits: 0,
+    mainColor: '#77C73C',
+    secondColor: '#423C65',
     healColor: '#A2F5BF',
-    healColorDark: '#1F9D55',
+    healColorDark: '#5A1472',
 });
 const krillin = new Player({
     name: "Krillin",
@@ -141,8 +143,11 @@ const kidBu = new Player({
     attackName: "Ki Blast",
     image: "img/kidbu.png",
     hits: 0,
+    mainColor: '#D78792',
+    secondColor: '#C1D2C8',
     healColor: '#A2F5BF',
-    healColorDark: '#1F9D55',
+    healColorDark: '#56BA80',
+    
 });
 const beerus = new Player({
     name: "Beerus",
@@ -153,6 +158,8 @@ const beerus = new Player({
     attackName: "Ki Blast",
     image: "img/beerus.png",
     hits: 0,
+    mainColor: '#A181AD',
+    secondColor: '#47A6DB',
     healColor: '#A2F5BF',
     healColorDark: '#1F9D55',
 });
@@ -165,6 +172,8 @@ const cell = new Player({
     attackName: "Ki Blast",
     image: "img/cell.png",
     hits: 0,
+    mainColor: '#517425',
+    secondColor: '#131930',
     healColor: '#A2F5BF',
     healColorDark: '#1F9D55',
 });
@@ -235,8 +244,8 @@ function selectHero(){
       }, 500);  
    });
    //Hero Health Btn 
-   heroHeal.style.backgroundColor=`${char.healColor}`;
-   heroHeal.style.border=`3px solid ${char.healColorDark}`;
+   heroHeal.style.backgroundColor=`${char.healColorDark}`;
+   heroHeal.style.border=`3px solid ${char.healColor}`;
    heroHeal.addEventListener("mouseenter", ()=> {
     heroHeal.style.border=`3px solid ${char.healColorDark}`;
     heroHeal.style.backgroundColor=`${char.healColor}`;
@@ -284,8 +293,8 @@ function selectVil(){
       }, 500);  
    });
    //Hero Health Btn 
-   vilHeal.style.backgroundColor=`${char.healColor}`;
-   vilHeal.style.border=`3px solid ${char.healColorDark}`;
+   vilHeal.style.backgroundColor=`${char.healColorDark}`;
+   vilHeal.style.border=`3px solid ${char.healColor}`;
    vilHeal.addEventListener("mouseenter", ()=> {
     vilHeal.style.border=`3px solid ${char.healColorDark}`;
     vilHeal.style.backgroundColor=`${char.healColor}`;
