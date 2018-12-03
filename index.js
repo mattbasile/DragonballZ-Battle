@@ -94,9 +94,9 @@ const piccolo = new Player({
     image: "img/piccolo.png",
     hits: 0,
     mainColor: '#77C73C',
-    secondColor: '#423C65',
+    secondColor: '#5A1472',
     healColor: '#A2F5BF',
-    healColorDark: '#5A1472',
+    healColorDark: '#1F9D55',
 });
 const krillin = new Player({
     name: "Krillin",
@@ -427,7 +427,7 @@ function beginGame(){
     mainTitle.innerHTML="Welcome to DBZ Duels!"
     arena.style.display='none'; 
     playByPlay.style.display='none';
-    body.style.backgroundImage = "url('img/start_BG.jpg')";
+    body.style.background = "url(img/start_BG.jpg) center center / cover no-repeat";
 }
 function starTextOne(){
     oneBtnImg.style.display='none'; 
