@@ -323,6 +323,7 @@ function heroAttackMove(vil, hero) {
     let activeHealth = vil.health;
     let heroStr = hero.attackPwr;
     let newHealth = activeHealth -= heroStr;
+    heroActivateKame();
     playByPlay.innerHTML= `Nice you hit ${vil.name} for ${heroStr}. Their health is ${newHealth}`;
     if(newHealth <=0 ){
         selectedVillain.health = 0;
@@ -378,8 +379,8 @@ function vilAttackMove(hero, vil) {
 function heroSaiyanMove(vil, hero) {
     let activeHealth = vil.health;
     let saiyanStr = hero.attackPwr + Math.floor(Math.random() * Math.floor(`${hero.saiyanPwr}`));
-    console.log(saiyanStr);
     let newHealth = activeHealth -= saiyanStr;
+    heroActivateKame();
     if(newHealth <=0 ){
         selectedVillain.health = 0;
         vilHealth.innerHTML = `Health: ${selectedVillain.health}`;
@@ -490,11 +491,18 @@ function villainsaiyainActivate(hero, vil){
         vilSaiyan.style.textDecoration='none';
     } 
 }
-    
+   
+function heroActivateKame(){
+    heroKame.style.display='block';
+    setTimeout(function() {
+        heroKame.style.display='none';
+        heroKame.style.position= '0';
+      }, 197);  
+}
 function vilActivateKame(){
     vilKame.style.display='block';
     setTimeout(function() {
         vilKame.style.display='none';
         vilKame.style.position= '0';
-      }, 300);  
+      }, 197);  
 }
