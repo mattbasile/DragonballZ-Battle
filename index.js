@@ -23,6 +23,7 @@ const heroSelectBtns = document.querySelectorAll(".hero-roster button")
 // const piccoloBtn = document.querySelectorAll(".piccolo");
 // const krillinBtn = document.querySelectorAll(".krillin");
 const heroImg = document.querySelector(".hero-img")
+const heroKame = document.querySelector(".hero-kame-glow")
 const heroName = document.querySelector(".hero-title")
 const heroHealth = document.querySelector(".hero-health")
 const heroAttack = document.querySelector(".hero-attack")
@@ -33,6 +34,7 @@ const vilCol = document.querySelector(".villain");
 const vilSelect = document.querySelector(".vil-roster")
 const vilName = document.querySelector(".vil-title")
 const vilImg = document.querySelector(".vil-img")
+const vilKame = document.querySelector(".vil-kame-glow")
 const vilHealth = document.querySelector(".vil-health")
 const vilAttack = document.querySelector(".vil-attack")
 const vilSaiyan = document.querySelector(".vil-saiyan")
@@ -325,11 +327,13 @@ function heroAttackMove(vil, hero) {
     if(newHealth <=0 ){
         selectedVillain.health = 0;
         vilHealth.innerHTML = `Health: ${selectedVillain.health}`;
-        startBtn.style.display ="flex";
-        startBtn.innerHTML ="Play <br> Again?";
-        startBtn.addEventListener('click', function(){
+        setTimeout(function(){
+            startBtn.style.display ="flex";
+            startBtn.innerHTML ="Play <br> Again?";
+            startBtn.addEventListener('click', function(){
             window.location.reload();
         });
+        }, 800);
         playByPlay.innerHTML= `You've destroyed ${vil.name}! Congrats ${hero.name}, you are a true Hero!`
     } else{
     selectedVillain.health = newHealth;
@@ -349,17 +353,19 @@ function vilAttackMove(hero, vil) {
     let activeHealth = hero.health;
     let vilStr = vil.attackPwr;
     let newHealth = activeHealth -= vilStr;
+    vilActivateKame();
     playByPlay.innerHTML= `Nice you hit ${hero.name} for ${vilStr}. Their health is ${newHealth}`;
     if(newHealth <=0 ){
         selectedHero.health = 0;
         heroHealth.innerHTML = `Health: ${selectedHero.health}`;
-        startBtn.style.display ="flex";
+        setTimeout(function(){
+            startBtn.style.display ="flex";
         startBtn.innerHTML ="Play <br> Again?";
         startBtn.addEventListener('click', function(){
             window.location.reload();
         });
+        }, 800);
         playByPlay.innerHTML=  `You've destroyed ${hero.name}! Congrats ${vil.name}, you are a truly Wicked!`;
-
     } else{
     selectedHero.health = newHealth;
     heroHealth.innerHTML = `Health: ${selectedHero.health}`;
@@ -377,11 +383,13 @@ function heroSaiyanMove(vil, hero) {
     if(newHealth <=0 ){
         selectedVillain.health = 0;
         vilHealth.innerHTML = `Health: ${selectedVillain.health}`;
-        startBtn.style.display ="flex";
-        startBtn.innerHTML ="Play <br> Again?";
-        startBtn.addEventListener('click', function(){
+        setTimeout(function(){
+            startBtn.style.display ="flex";
+            startBtn.innerHTML ="Play <br> Again?";
+            startBtn.addEventListener('click', function(){
             window.location.reload();
-        });
+            });
+        }, 800);
         playByPlay.innerHTML= `You've destroyed ${vil.name}! Congrats ${hero.name}, you are a true Hero!`;
 
     } else{
@@ -392,16 +400,18 @@ function heroSaiyanMove(vil, hero) {
 function vilSaiyanMove(hero, vil) {
     let activeHealth = hero.health;
     let saiyanStr = vil.attackPwr + Math.floor(Math.random() * Math.floor(`${vil.saiyanPwr}`));
-    console.log(saiyanStr);
     let newHealth = activeHealth -= saiyanStr;
+    vilActivateKame();
     if(newHealth <=0 ){
         selectedHero.health = 0;
         heroHealth.innerHTML = `Health: ${selectedHero.health}`;
-        startBtn.style.display ="flex";
-        startBtn.innerHTML ="Play <br> Again?";
-        startBtn.addEventListener('click', function(){
+        setTimeout(function(){
+            startBtn.style.display ="flex";
+            startBtn.innerHTML ="Play <br> Again?";
+            startBtn.addEventListener('click', function(){
             window.location.reload();
-        });
+            });
+        }, 800);
         playByPlay.innerHTML= `You've destroyed ${hero.name}! Congrats ${vil.name}, you are a truly Wicked!`;
 
     } else{
@@ -414,12 +424,14 @@ function heroHealMove(hero){
     let activeHealth = hero.health;
     let healed = activeHealth += Math.floor(Math.random() * 11);
     hero.health = healed;
+    playByPlay.innerHTML= `You've healed ${hero.name}! Your health is now ${healed}!`;
     heroHealth.innerHTML = `Health: ${healed}`;
 }
 function villainHealMove(vil){
     let activeHealth = vil.health;
     let healed = activeHealth += Math.floor(Math.random() * 11);
     vil.health = healed;
+    playByPlay.innerHTML= `You've healed ${vil.name}! Your health is now ${healed}!`;
     vilHealth.innerHTML = `Health: ${healed}`;
 }
 // ONE or TWO PLAYER
@@ -479,3 +491,10 @@ function villainsaiyainActivate(hero, vil){
     } 
 }
     
+function vilActivateKame(){
+    vilKame.style.display='block';
+    setTimeout(function() {
+        vilKame.style.display='none';
+        vilKame.style.position= '0';
+      }, 300);  
+}
