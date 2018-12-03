@@ -79,6 +79,8 @@ const masterR = new Player({
     attackName: "Ki Blast",
     image: "img/roshi.png",
     hits: 0,
+    mainColor: '#FFFFFF',
+    secondColor: '',
     healColor: '#A2F5BF',
     healColorDark: '#1F9D55',
 });
@@ -243,7 +245,6 @@ function selectHero(){
         heroHeal.style.border=`3px solid ${char.healColor}`;
       }, 500);  
    });
-
    selectedHero.health = char.health;
    selectedHero.name = char.name;
    selectedHero.saiyanPwr = char.saiyanPwr;
@@ -259,6 +260,40 @@ function selectVil(){
     vilName.innerHTML= `Villain: ${char.name}`
     vilHealth.innerHTML = `Health: ${char.health}`
     vilImg.setAttribute("src", `${char.image}`);
+    //Arena Styles Based On Character
+   //Hero Attack Btn
+   vilAttack.style.backgroundColor=`${char.mainColor}`;
+   vilAttack.style.border=`3px solid ${char.secondColor}`;
+   vilAttack.addEventListener("mouseenter", ()=> {
+        vilAttack.style.border=`3px solid ${char.mainColor}`;
+        vilAttack.style.backgroundColor=`${char.secondColor}`;
+    setTimeout(function() {
+        vilAttack.style.backgroundColor=`${char.mainColor}`;
+        vilAttack.style.border=`3px solid ${char.secondColor}`;
+      }, 500);  
+   });
+   //Hero Saiyan Btn
+   vilSaiyan.style.backgroundColor=`${char.secondColor}`;
+   vilSaiyan.style.border=`3px solid ${char.mainColor}`;
+   vilSaiyan.addEventListener("mouseenter", ()=> {
+    vilSaiyan.style.border=`3px solid ${char.secondColor}`;
+    vilSaiyan.style.backgroundColor=`${char.mainColor}`;
+       setTimeout(function() {
+        vilSaiyan.style.backgroundColor=`${char.secondColor}`;
+        vilSaiyan.style.border=`3px solid ${char.mainColor}`;
+      }, 500);  
+   });
+   //Hero Health Btn 
+   vilHeal.style.backgroundColor=`${char.healColor}`;
+   vilHeal.style.border=`3px solid ${char.healColorDark}`;
+   vilHeal.addEventListener("mouseenter", ()=> {
+    vilHeal.style.border=`3px solid ${char.healColorDark}`;
+    vilHeal.style.backgroundColor=`${char.healColor}`;
+       setTimeout(function() {
+        vilHeal.style.backgroundColor=`${char.healColorDark}`;
+        vilHeal.style.border=`3px solid ${char.healColor}`;
+      }, 500);  
+   });
     selectedVillain.health = char.health;
     selectedVillain.name = char.name;
     selectedVillain.saiyanPwr = char.saiyanPwr;
